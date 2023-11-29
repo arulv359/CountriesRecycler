@@ -1,7 +1,6 @@
-package com.example.codingtest.walmart.myapplication4
+package com.example.codingtest.walmart.walmartcodingexcercise
 
 import org.junit.Test
-
 import org.junit.Assert.*
 
 /**

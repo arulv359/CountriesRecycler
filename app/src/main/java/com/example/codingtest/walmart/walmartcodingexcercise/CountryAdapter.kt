@@ -1,28 +1,31 @@
 package com.example.codingtest.walmart.walmartcodingexcercise
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.codingtest.walmart.myapplication4.R
 
 class CountryAdapter(private val itemList: List<Country>) :
     RecyclerView.Adapter<CountryAdapter.ViewHolder>() {
+    private lateinit var context: Context
 
     // Creating view holder
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.country_layout, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.country_item_layout, parent, false)
+        context = parent.context
         return ViewHolder(view)
     }
 
     //Populating the actual values
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = itemList[position]
-        holder.countryName.text = "${item.name}, ${item.region}"
-        holder.countryCode.text = item.code
-        holder.capitalName.text = item.capital
+        val aCountry = itemList[position]
+        holder.countryName.text = aCountry.name
+        holder.region.text = context.getString(R.string.region_delimiters, aCountry.region)
+        holder.countryCode.text = aCountry.code
+        holder.capitalName.text = aCountry.capital
     }
 
     override fun getItemCount(): Int {
