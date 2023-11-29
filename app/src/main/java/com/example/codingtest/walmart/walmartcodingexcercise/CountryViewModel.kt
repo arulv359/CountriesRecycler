@@ -21,7 +21,8 @@ class CountryViewModel : ViewModel() {
     private fun fetchData() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val baseUrl = "http://192.168.86.21"
+//                val baseUrl = "http://192.168.86.21"
+                val baseUrl = "https://gist.githubusercontent.com"
                 val retrofit = Retrofit.Builder().baseUrl(baseUrl)
                     .addConverterFactory(GsonConverterFactory.create()).build()
 
